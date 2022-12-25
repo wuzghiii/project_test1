@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .block {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="1">隐藏</button>
+        <button id="2">显示</button>
+        <button id="3">切换</button>
+        <div class="block"></div>
+    </div>
+    <script>
+        $(document).ready(()=>{
+            $('#1').click(function(){
+                $('.block').hide('fast')
+            })
+            $('#2').click(function(){
+                $('.block').show('slow')
+            })
+            $('#3').click(function(){
+                $('.block').toggle(2000)
+            })
+        })
+    </script>
+</body>
+</html>
