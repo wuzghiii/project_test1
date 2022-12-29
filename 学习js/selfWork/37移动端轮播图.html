@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        li{
+            list-style: none;
+        }
+        .focus{overflow: hidden;
+            margin: 10px auto;
+            position: relative;
+            width:160px;
+            height: 90px;
+        }
+        .focus ul{
+            position: absolute;
+            
+            left: -160px;
+            width: 500%;
+            height: 100%;
+        }
+        .focus ul li{
+            float: left;
+            width: 20%;
+        }
+        .focus img{
+            
+            width:160px;
+            height:90px;
+
+        }
+        .focus ol {
+            position: absolute;
+            bottom:10px;
+            right: 10px;
+            z-index: 10000;
+        }
+        .focus ol li{
+            float: left;
+            margin-left: 10px;
+            width: 5px;
+            height: 5px;
+            background-color: rgb(216, 190, 190);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .currentRadio{
+            width: 10px !important;
+            
+        }
+    </style>
+        <script src="37移动端轮播图.js"></script>
+</head>
+<body>
+    <div class="focus">
+        <ul>
+            <li><a href="#"><img src="图片/day2/4.jpg"></a></li>
+            <li><a href="#"><img src="图片/day2/1.jpg"></a></li>
+            <li><a href="#"><img src="图片/day2/2.jpg"></a></li>
+            <li><a href="#"><img src="图片/day2/4.jpg"></a></li>
+            <li><a href="#"><img src="图片/day2/1.jpg"></a></li>
+        </ul>
+        <ol>
+            <li class="currentRadio"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+</body>
+</html>

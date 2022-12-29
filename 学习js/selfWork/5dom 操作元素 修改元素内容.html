@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <div></div>
+    <script>
+        var btn =document.querySelector('button');
+        var div =document.querySelector('div');//选中第一div
+        btn.onclick=function (){
+            div.innerHTML='<strong>时间是</strong> '+getNowDate();//修改idiv中的内容
+        }
+
+
+        function getNowDate(){
+            var d3=new Date();
+        var year=d3.getFullYear();
+         var month=d3.getMonth();
+        var date=d3.getDate();
+         var day=d3.getDay();
+     var arryday=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];//getday()获取星期日为0，星期六为6
+       return (year+'年 '+month+'月 '+date+'日 '+arryday[day]);
+        }
+    </script>
+</body>
+</html>

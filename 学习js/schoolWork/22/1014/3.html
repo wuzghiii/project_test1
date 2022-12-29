@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>
+        点名
+    </button>
+    <div></div>
+    <script>
+        var btn=document.querySelector('button');
+        var div=document.querySelector('div');
+        var nameArray=['wanger','老三','da','badw'];
+
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1))+min;
+     
+        }
+        btn.onclick=function(){
+            div.innerHTML=nameArray[getRandom(0,nameArray.length-1)]+' ';
+        }
+    </script>
+</body>
+</html>

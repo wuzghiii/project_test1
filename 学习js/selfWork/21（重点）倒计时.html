@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .countDown div{
+            display: inline-block;
+            margin-left: 20px;
+            background-color: red;
+            width: 50px;
+            height: 50px;
+            text-align: center;/* 水平居中 */
+            line-height: 50px; /* 垂直居中 */
+        }
+    </style>
+</head>
+<body>
+    <div class="countDown">
+        <div id="h"></div ><div id='m'></div><div id="s"></div>
+    </div>
+    <script>
+        var hour=document.querySelector('.countDown').querySelector('#h');
+        var min= document.querySelector('.countDown').querySelector('#m');
+        var second= document.querySelector('.countDown').querySelector('#s');
+
+
+        var inputTime=+new Date('2022-11-22 6:15:30');
+        countDown();//应为interval是在1秒后执行所以刚刷新时要过一秒才能执行所以在这里先执行一次
+        var inteval1=setInterval(countDown,1000);
+         function countDown(){
+            var nowTime=+new Date();//当前时间戳
+            
+            var times=(inputTime-nowTime)/1000;
+
+            var h=parseInt(times/60/60%24);
+            h=h<10?'0'+h:h;//01 02 03
+            hour.innerHTML=h;
+            var m=parseInt(times/60%60); 
+            m=m<10?'0'+m:m; 
+            min.innerHTML=m;   
+            var s=parseInt(times%60);
+            s=s<10?'0'+s:s;
+            second.innerHTML=s; 
+        }
+        
+    </script>
+
+</body>
+</html>

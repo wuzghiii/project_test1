@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function Fun(){//this.prototype=new {}
+        }
+        var fun=new Fun()//this._proto_=Fun.prototype
+
+        Fun.prototype.say=function(){
+            console.log('saysay');
+        }
+
+        //1 函数的显示原型指向的对象默认是一个空的object对象（但Object不满足）
+        console.log(Fun.prototype instanceof Object);//true
+        console.log(Object.prototype)
+        console.log(Object.prototype instanceof Object)//false
+
+        //2所有函数都是 Function（包括Function）是它自身的实例
+        console.log(Function._proto_==Function.prototype);//true
+        console.log(Fun._proto_==Function.prototype);//true
+
+        //3Object的原型对象是原型链的尽头
+        console.log(Object.prototype._proto_);//null
+    </script>
+</body>
+</html>

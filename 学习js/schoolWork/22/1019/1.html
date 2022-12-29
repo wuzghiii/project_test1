@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .formAll {
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        h3 {
+            padding-left: 75px;
+        }
+
+        form ul li {
+            margin: 15px 0px;
+            list-style: none;
+        }
+
+        button {
+            padding: 0px 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="formAll">
+        <h3><strong>用户注册</strong></h3>
+        <form>
+            <ul id="form_list">
+                <li><span>用户账号</span><input type="text"></li>
+                <li><span>用户邮箱</span><input type="text"></li>
+                <li><span>手机号码</span><input type="text"></li>
+                <li><span>用户密码</span><input type="text"></li>
+                <li><span>确认密码</span><input type="text"></li>
+            </ul>
+            <button>验证</button>
+        </form>
+    </div>
+    <script>
+        var lists = document.querySelector('#form_list').querySelectorAll('li');
+        var b = document.querySelector('form').querySelector('button');
+
+        b.disabled = true;
+        for (let i = 0; i < lists.length; i++) {
+            lists[i].querySelector('input').setAttribute('value1', '0');
+        }
+
+        for (let i = 0; i < lists.length; i++) {
+            lists[i].querySelector('input').onblur = function () {
+                switch (i) {
+                    case 0: {
+
+                        if (this.value.length < 3) {
+                            alert('长度小于3');
+                            this.value1 = 0;
+                            break;
+                        }
+                        this.value1 = 1;
+                        break;
+                    }
+                    case 1: {
+
+                        if (this.value.indexOf('@') == -1 && this.value.indexOf('.') == -1) {
+                            alert('格式不对');
+                            this.value1 = 0;
+                            break;
+                        }
+                        this.value1 = 1;
+                        break;
+                    }
+                    case 2: {
+                        if (this.value.length < 10) {
+                            alert('长度小于10');
+                            this.value1 = 0;
+                            break;
+                        }
+                        this.value1 = 1;
+                        break;
+                    }
+
+
+                    case 3: {
+
+                        if (this.value.length < 7) {
+                            alert('长度小于7');
+                            this.value1 = 0;
+                            break;
+                        }
+                        this.value1 = 1;
+                        break;
+                    }
+                    case 4: {
+
+                        if (this.value.length != lists[3].querySelector('input').value.length) {
+                            alert('两次密码不一致');
+                            this.value1 = 0;
+                            break;
+                        }
+                        this.value1 = 1;
+                        break;
+                    }
+
+                }
+                for (let i = 0; i < lists.length; i++) {
+                    if (lists[i].querySelector('input').value1 != 1) {
+                        b.disabled = true;
+                        break;
+                    }
+                    b.disabled = false;
+                }
+            }
+        }
+    </script>
+    </form>
+</body>
+
+</html>

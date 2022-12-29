@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .form_lists li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <form>
+    <div>
+        <h3>体脂率计算器</h3>
+        <div>
+            <div>填写个人信息</div>
+            <ul class="form_lists">
+                <li><input type="text" placeholder="性别"></li>
+                <li><input type="text" placeholder="年龄"></li>
+                <li><input type="text" placeholder="体重" ></li>
+                <li><input type="text" placeholder="身高"></li>
+            </ul>
+        </div>
+        <button>计算</button>
+    </div>
+    <script>
+        var input_lists=document.querySelector('.form_lists').querySelectorAll("li");
+        var input_age=input_lists[1].querySelector('input');
+        input_age.onblur=function(){
+            if(this.value>120){
+                alert('年龄错误');
+            }
+        }
+    </script>
+</form>
+</body>
+</html>

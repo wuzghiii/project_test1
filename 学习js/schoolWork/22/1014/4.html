@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">
+        倒计时:
+    </button>
+    <div id="thetime"></div>
+    <div id="condition"></div>
+
+    <script>
+        var thetime=document.getElementById('thetime');
+        var btn=document.getElementById('btn');
+        var c=document.getElementById('condition');
+        var examingTime=1*60*61;
+        //var examingTime=3;
+        btn.onclick=function(){
+           
+          btn.disabled=true;//禁用按钮
+           var intervalId= setInterval(function(){
+             var h=parseInt(examingTime/60/60);
+            var m=parseInt(examingTime/60%60);
+            var s=parseInt(examingTime%60);
+            thetime.innerHTML='剩余'+h+'时'+m+'分钟'+s;
+            if(examingTime===0) {
+                clearInterval(intervalId);
+                c.innerHTML='g';
+            }
+            else if(examingTime>1*60*60){
+            c.innerHTML='好极了';
+             
+           }else{
+            c.innerHTML='快到了';
+           }
+            examingTime=examingTime-1;  
+           },1000);
+         
+          
+            
+        }
+        </script>
+</body>
+</html>

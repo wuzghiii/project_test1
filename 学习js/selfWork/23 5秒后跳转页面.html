@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div=document.querySelector('div');
+
+        var timer=setInterval(countDown,1000);
+        var countDown=function(){
+            var time=5;//倒计时
+            if(time==0){
+                location.href='https://tool.liumingye.cn/music/?page=audioPage&type=migu&name=%E8%B0%81%E6%98%8E%E6%B5%AA%E5%AD%90%E5%BF%83%20-%20%E7%8E%8B%E6%9D%B0#/search/M/song/%E8%A5%BF%E5%8E%A2';
+                clearInterval(timer)
+            }else {
+                div.innerHTML='倒计时还剩'+time+'秒进行跳转';
+                time--;              
+            }
+        }
+    </script>
+</body>
+</html>

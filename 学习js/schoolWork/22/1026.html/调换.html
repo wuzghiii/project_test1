@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="form1">
+        <select name="iList" id="iList" multiple size="6">
+            <option value="0">江苏省</option>
+            <option value="1">安徽省</option>
+            <option value="2">山东省</option>
+            <option value="3">河北省</option>
+            <option value="4">吉林省</option>
+        </select>
+        <input type="button" id="toright" value="右移>>" onclick="moveList('iList','rList')">
+        <input type="button" id="toleft" value="《左移" onclick="moveList('rList','iList')">
+        <select name="rList" id="rList" multiple size="6">
+            <option value="0">河南省</option>
+            <option value="1">辽宁省</option>
+            <option value="2">陕西省</option>
+        </select>
+        <script>
+            function moveList(select1,select2){
+                var select1=document.getElementById(select1);
+                var select2=document.getElementById(select2);
+                var current=select1.selectedIndex;
+                while(select1.selectedIndex>-1){
+                    var nO=document.createElement("option");
+                    nO.value=select1[select1.selectedIndex].value;
+                    nO.text=select1[select1.selectedIndex].text;
+                    select2.add(nO);
+                    select1.remove(select1.selectedIndex)
+                }
+            }
+        </script>
+
+    </form>
+</body>
+</html>

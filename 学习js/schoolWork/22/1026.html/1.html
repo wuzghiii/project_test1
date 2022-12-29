@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input,select{
+            width: 260px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        select{
+            width: 265px;
+            height: 36px;
+        }
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form name="myform" id="myform">
+    <div>姓名：<input name="userName" type="text" id="userName" ></div>
+    省份：<select name="myselect" id="myselect">
+        <option>请选择所在的省份</option>
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="江苏省">江苏省</option>
+       
+    </select>
+    <div>城市：<input type="text" id="city"></div>
+    <button>确认</button>
+</form>
+
+<script>
+    var myselect=document.querySelector('select');//select
+    var username=document.getElementById('userName');
+    var city=document.getElementById('city');
+    var btn =document.querySelector('button');
+    myselect.onchange=function(){
+        console.log('1');
+        var d=myselect.selectedIndex;
+        if(d==1||d==2)
+        city.value=myselect.options[d].text;
+    }
+    btn.onclick=function(){
+        document.write("<body bgColor=#FFFAEB> ");
+        document.write("<h1>注册信息如下</h2>");
+        document.write('姓名:'+username.value+" 省份:"+myselect.value+" 城市:"+city.value);
+       
+    }
+
+    
+</script>
+</body>
+</html>

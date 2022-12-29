@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btn">
+        倒计时:
+    </div>
+    <button id="thetime"></button>
+
+    <script>
+        var thetime=document.getElementById('thetime');
+        var btn=document.getElementById('btn');
+        var i;
+        var lastime=function(time){
+            var inputTime=new Date(time);
+            var nowTime=new Date();
+            var lastTime=inputTime-nowTime;//获取毫秒
+            lastTime=parseInt(lastTime/1000);//获取秒，这里要转成整数因为后面设置间隔的时候lasttime要=0但是lastime是小数时候就没法实现=0
+
+            var day=parseInt(lastTime/60/60/24);
+            var h=parseInt(lastTime/60/60%24);
+            h=h<10?'0'+h:h;//01 02 03
+            var mins=parseInt(lastTime/60%60);
+            var seconds=parseInt(lastTime%60);
+            mins>10?mins:'0'+mins;
+            seconds>10?seconds:'0'+seconds;
+            thetime.innerHTML='时间是'+(day+'日'+h+'时'+mins+'分钟'+seconds+'秒');
+             i=lastTime;
+        }
+        
+        
+       
+        btn.onclick=function(){
+            var intervalId=setInterval(function(){//这里直接用匿名函数会方便些，可让clearInterval在setInterval内
+                lastime('2022-6-15 22:13:49'); 
+                if(i==0) clearInterval(intervalId);
+            },1000);
+                
+           
+        }
+        </script>
+</body>
+</html>

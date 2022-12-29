@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>发送</button>
+
+    <script>
+        //获取元素
+        const btns=document.querySelectorAll('button');
+
+         //创建对象
+         let xhr=null;
+
+         //判定是否在请求
+         let issending=false;
+        //绑定事件
+
+        //发送事件
+        btns[0].addEventListener('click',()=>{
+
+
+
+
+          //如果还在发送就取消该请求，并创建一个新的请求
+            if(issending){
+                xhr.abort();
+            }
+            xhr=new XMLHttpRequest;
+
+            //初始化    
+            
+            xhr.open('get','http://127.0.0.1:8000/delay');
+
+
+            issending=true;
+            //请求
+            xhr.send();
+            xhr.onreadystatechange=function(){             
+                if(xhr.readyState===4){
+                    if(xhr.status>=200&&xhr.status<300){
+                        //发送完毕后
+                        issending=false;
+                    }
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

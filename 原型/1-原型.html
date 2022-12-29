@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Fun(a,b){
+            this.A=a,
+            this.B=b;
+            this.play=function(){
+                console.log('sayplay'+this.A+','+this.B)
+            }
+        }
+
+        //这个添加办法与原型无关
+        Fun.bigplay=function(){
+            console.log('sayplaybig')
+        }
+
+        //实例化对象
+        let fun=new Fun(1,2)
+        fun.play();
+
+
+        //原型
+        console.log(Fun.prototype)
+
+  
+        //给原型添加方法
+        Fun.prototype.smallplay=function(){
+            console.log('sayplaybig');
+        }
+        console.log(Fun.prototype);
+
+
+
+        //实例化对象
+        var fun2 =new Fun(1,12);
+
+        fun2.smallplay()
+        
+
+
+
+    </script>
+</body>
+</html>

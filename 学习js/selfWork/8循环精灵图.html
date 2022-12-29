@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        div{
+            height: 100px;
+            width: 100px;
+        }
+        li{
+            height: 20px;
+            width: 20px;
+            display: inline-block;
+            list-style: none;
+            /* 去掉小点 */
+            background-color: rebeccapurple;
+            background:url(图片/sprite.png) no-repeat;
+            /* 用url()来明确图片 */
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    </div>
+    <script>
+        var liArray=document.querySelectorAll('li');
+        for(var i=0;i<liArray.length;i++){
+            var indexY=i*44;
+            // liArray[i].style.backgroundImage=url(图片/sprite.png); 错误不明
+            liArray[i].style.backgroundPosition='0 -'+indexY+'px';//这里用字符串拼接的形式完成即0 -indexYpx
+        }
+    </script>
+</body>
+</html>

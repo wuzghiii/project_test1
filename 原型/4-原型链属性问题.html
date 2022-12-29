@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun(){
+
+        }
+        fun.prototype.a='xxx'//给原型添加方法
+
+        let f1=new fun();
+        console.log(f1.a);//a是原型的
+
+
+        let f2=new fun();
+        f2.a='yyy';
+        console.log(f2.a);//a是对象本身的
+
+
+
+
+        function People(name,address){
+            this.name=name,
+            this.address=address
+        }
+        People.prototype.setname=function(name){
+            this.name=name
+        }
+
+        var p1=new People('dawei','beijing');
+        p1.setname('xiaobing');
+        console.log(People)
+        console.log(p1);
+        var p2=new People('daweiiii','beijing');
+
+
+        //对象的
+        console.log(p1.prototype==p2.prototype)
+    </script>
+</body>
+</html>

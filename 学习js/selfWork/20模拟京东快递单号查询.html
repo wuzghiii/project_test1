@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 220px;
+        height: 30px;
+        background-color: antiquewhite;
+    }
+    .con{
+        display: none;
+        background-color: red;
+        font-size: 30px;
+    }
+</style>
+<body>
+    <div>
+        <div class="con"></div>
+    </div>
+    <input type="text">
+
+    <script>
+        var serach=document.querySelector('input');
+        var con=document.querySelector('.con');
+
+        serach.addEventListener('keyup',function(e){//keydown=>按下就触发事件，此时文本框中还没有值,无法赋值最新的数据给盒子
+            if(this.value.length==0){
+                con.style.display='none'
+            }else{
+                con.innerHTML=this.value;
+                con.style.display='block'
+            }
+        })
+
+        //失去焦点的时候盒子消失
+        serach.addEventListener('blur',function(){
+            con.style.display='none'
+        })
+
+
+        //得到焦点的时候盒子出现
+        //但是value为空的时候盒子不能出现   -------->   value！=0时盒子出现
+       
+        serach.addEventListener('focus',function(){
+            if(this.value.length!=0){
+                con.style.display='block'
+            }
+           
+        })
+    </script>
+</body>
+</html>

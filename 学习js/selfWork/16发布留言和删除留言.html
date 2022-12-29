@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" style="width:220px;height:300px">
+    <button>发布</button>
+    <ul>
+        
+    </ul>
+    <script>
+        //获取元素
+        var input=document.querySelector('input');
+        var button=document.querySelector('button');
+        var ul=document.querySelector('ul');
+        
+
+        //添加事件
+        button.onclick=function(){
+            //发布留言
+            if(input.value==''){
+                alert("内容为空，无法发布");
+                return false//不知道为什么
+            }else{
+                //创建节点
+                var li=document.createElement('li');
+                li.innerHTML=input.value+"//"+getTime() +"<a href='javascript:0;'>删除</a>";//在末尾添加一个删除链接
+                //添加节点
+                ul.insertBefore(li,ul.children[0]);//每次发布的言论都在最前面
+                input.value=null;//发布后input内的内容清空
+            }
+
+
+            //删除留言
+            //给添加的按钮添加删除留言
+            //这个事件不能添加到onclick外   自我理解：1.a在onclick外无法获取
+            //这个删除键是在创建时候添加的
+            var as=document.querySelector('a');//能写querySelector('a')吗?-->resolve
+            for(let i=0;i<as.length;i++){
+                
+                as[i].onclick=function(){
+                    ul.removeChild(this.parentNode);//当a被点击时让ul删除自己的子节点同时也是a的父节点
+                }
+            }
+
+            //resolve ther problem
+            // var a=li.querySelector('a');
+            // a.onclick=function(){
+            //         ul.removeChild(this.parentNode);//当a被点击时让ul删除自己的子节点同时也是a的父节点
+            //     }
+
+        }
+         //秒 时 分 用函数封装 
+        function getTime(){
+             var d4=new Date();
+            var h=d4.getHours();
+            h=h<10?'0'+h:h;//01 02 03
+            var m=d4.getMinutes();
+            m=m<10?'0'+m:m;  
+            var s=d4.getSeconds();
+            s=s<10?'0'+s:s;
+           return  h+'时'+m+'分'+s+'秒';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        div {
+            width: 500px;
+            margin: 20px auto;  /* auto需要指定宽度才能生效 */
+        }
+        .mess{
+            display: inline-block;
+            margin-left: 5px;
+            padding-left: 16px;
+            padding-bottom: 3px;
+            background :url(图片/mess.png) no-repeat left center;
+        }
+        .wrong{
+            color: red;
+            background :url(图片/wrong.png) no-repeat left center;
+        }
+        .right{
+            color: green;
+            background :url(图片/right.png) no-repeat left center; 
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <input type="password">
+        <!-- 结论、img、input属于行内替换元素。height/width/padding/margin均可用。效果等于块元素。
+1.1、行内非替换元素，如span 除height和width外其余属性都能应用生效，垂直方向上不会影响其他元素的位置，水平方向会影响本行中元素位置。 -->
+        <p class="mess" >请输入6到12位的密码</p>
+    </div>
+    <script>
+        var input=document.querySelector('input');//获取
+        var p=document.querySelector('p');
+
+
+        input.onblur=function(){
+            if(this.value.length<6||this.value.length>12){
+                p.className='mess wrong';
+                p.innerText='输入错误请输入6到12位的密码';
+            }else{
+                p.className='mess right';
+                p.innerText='输入正确';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="图片/day2/angel.gif" style="position: absolute;">
+    <!-- 应为跟随鼠标移动所以图片应为绝对定位来不占用网页的空间 -->
+</body>
+<script>
+    // document.addEventListener('contextmenu',function(e){
+    //     e.preventDefault();
+    // });
+    // document.addEventListener('selectstart',function(e){
+    //     e.preventDefault();
+    // })
+
+
+    //天使跟随鼠标
+    
+    var img=document.querySelector('img');
+    //因为是在文本中添加事件所以对象是document
+    document.addEventListener('mousemove',function(e){//mousemove鼠标一移动就触发
+        img.style.top=e.pageY-40 +'px';//pageX,pageY是相对整个文档的坐标，让图片的top，left位置定位在鼠标的位置定位到鼠标旁边
+        img.style.left=e.pageX-48 +'px';
+    })
+</script>
+</html>

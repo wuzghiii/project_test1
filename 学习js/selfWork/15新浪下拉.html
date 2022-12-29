@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .nav li{
+            display: inline-block;
+            list-style: none;
+            position: relative;
+        }
+        .nav li ul{
+            position: absolute;
+            bottom: -100px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="nav">
+            <li>
+                <a href="#">微博</a>
+                <ul>
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">微博</a>
+                <ul>
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+        
+            <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我</li>
+            </ul>
+            </li>
+        <ul>
+    </div>
+    <script>
+        var list=document.querySelector('.nav').querySelectorAll('li');
+        for(var i=0;i<list.length;i++){
+            list[i].onmouseover=function(){
+                this.children[1].style.display='block';//list下的ul隐藏
+            }
+            list[i].onmouseleave=function(){
+                this.children[1].style.display='none';//list下的ul出现
+            }
+        }
+    </script>
+</body>
+</html>

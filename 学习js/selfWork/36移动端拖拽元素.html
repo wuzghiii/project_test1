@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 1触摸元素 touchstart-->获取手指初始坐标，同时获得盒子的原来的位置
+        // 2移动元素 touchmove 计算手指的滑动距离，并且一地哦那个盒子
+        // 3离开手指 touchend
+        //即 盒子现在的位置=盒子之前的位置+（手指现在的位置-手指之前的位置）
+
+        var div=document.querySelector('div');
+        var startX=0;//开始手指的位置
+        var startY=0;
+        var x=0;
+        var y=0;
+        div.addEventListener('touchstart',function(e){
+            startX=e.targetTouches[0].pageX;//之前的手指坐标
+            startY=e.targetTouches[0].pageY;
+
+            x=this.offsetLeft;//之前的盒子坐标
+            y=this.offsetTop;
+        })
+        div.addEventListener('touchmove',function(e){
+            var endX=e.targetTouches[0].pageX-startX;//手指现在的位置-手指之前的位置
+            var endY=e.targetTouches[0].pageY-startY;
+
+            this.style.left=x+endX+'px';//盒子现在的位置=盒子之前的位置+（手指现在的位置-手指之前的位置）
+            this.style.top=y+endY+'px';
+            e.preventDefault;//阻止在移动它的时候向整个页面下移动
+        })
+        //移动端不需要leave事件
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    //es6允许在大括号里面，直接写入变量和函数，作为对象的函数和方法
+    let name='a';
+    let change=()=>console.log('1');
+
+
+    const school={
+        name,
+        change,
+        //声明方法
+        improve(){
+            console.log('2');
+        }
+    }
+    //等价于
+    // const school2={
+    //     name:name,
+    //     change:change,
+    //     //声明方法
+    //     improve:function(){
+    //         console.log('2');
+    //     }
+    // }
+</script>
+</html>

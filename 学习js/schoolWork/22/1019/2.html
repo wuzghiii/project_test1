@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .formAll {
+            width: 700px;
+            margin: 20px auto;
+        }
+
+        h3 {
+            padding-left: 75px;
+        }
+
+        form ul li {
+            margin: 15px 0px;
+            list-style: none;
+        }
+
+        button {
+            padding: 0px 100px;
+
+        }
+        .purpose {
+            font-size: 5px;
+            color: gray;
+        }
+        .wrong{
+            color: red
+        }
+        .right{
+            color: green
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="formAll">
+        <h3><strong>用户注册</strong></h3>
+        <form>
+            <ul id="form_list">
+                <li><span>用户账号</span><input type="text"><span class="purpose">用户账户由字母，数字，下划线组成，字母开头。4-16位</span></li>
+                <li><span>用户邮箱</span><input type="text"><span class="purpose">请输入合法邮箱</span></li>
+                <li><span>手机号码</span><input type="text"><span class="purpose">请输入合法手机号</span></li>
+                <li><span>用户密码</span><input type="text"><span class="purpose">必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间</span></li>
+                <li><span>确认密码</span><input type="text"><span class="purpose">请和用户密码一致</span></li>
+            </ul>
+            <button>验证</button>
+        </form>
+    </div>
+    </form> 
+
+
+
+    
+    <script>
+       var inputs=document.querySelector('ul').querySelectorAll('input');
+       var spans=document.querySelector('ul').querySelectorAll('.purpose');
+       var button=document.querySelector('form').querySelector('button');
+
+       //给每个提示添加判断事件
+       for(let i=0;i<inputs.length;i++){
+        var input=inputs[i];
+
+       input.onblur=function(){ 
+        input.setAttribute('index',i);
+        input.setAttribute('t',false);
+        var index=Number(input.getAttribute('index'));//自定义属性//恒脑残自定义的属性自动是string要手动转成number
+        var span=spans[index];
+        
+        switch(index){
+            case 0:{
+                if(!(/^[a-zA-Z]\w{5,17}$/.test(this.value))){
+                    span.className='purpose wrong';
+                    span.innerHTML='必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间';
+                    this.t=false;
+                }else{
+                    span.className='purpose right';
+                    span.innerHTML='正确'
+                    this.t=true;
+                    
+                }
+                break;
+            }
+            case 1:{
+                if(!(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.value))){
+                    span.className='purpose wrong';
+                    span.innerHTML='请输入合法邮箱';
+                    this.t=false;
+                }else{
+                    span.className='purpose right';
+                    span.innerHTML='正确';this.t=true;
+                }
+                break;
+            }
+            case 2:{
+                if(!(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(this.value))){
+                    span.className='purpose wrong';
+                    span.innerHTML='请输入合法手机号';this.t=false;
+                }else{
+                    span.className='purpose right';
+                    span.innerHTML='正确';this.t=true;
+                }
+                break;
+            }
+            case 3:{
+                if(!(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$/.test(this.value))){
+                    span.className='purpose wrong';
+                    span.innerHTML='必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间';this.t=false;
+                }else{
+                    span.className='purpose right';
+                    span.innerHTML='正确';this.t=true;
+                }
+                break;
+            }
+            case 4:{
+
+                if(!(this.value==inputs[3].value)||this.value==''){
+                    span.className='purpose wrong';
+                    span.innerHTML='请与密码一致';this.t=false;
+                }else{
+                    span.className='purpose right';
+                    span.innerHTML='正确';this.t=true;
+                }
+                break;
+            }
+            }
+        }
+       }
+    
+
+       //添加button判断事件
+       button.onclick= function(){
+        for(let i=0;i<inputs.length;i++){
+            if(!inputs[i].t){
+                alert('不符合无法注册');
+                return false;
+            } 
+        }
+        alert('注册成功');
+       }
+
+    </script>
+</body>
+
+</html>

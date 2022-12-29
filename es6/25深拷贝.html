@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //拷贝所有数据
+        var o={
+            a:100,
+            v:`www`,
+            b:[1,2,3,3],
+            person:{
+                age:15,
+                name:`wang`
+            }
+        }
+
+
+        var obj={}
+
+        function deepcopy(newobj,oldobj){
+            for(var k in oldobj){
+                //1获取属性值
+                var item=oldobj[k];
+                //2判断是否为复杂类型
+                if(item instanceof Array){
+                    newobj[k]=[];
+                    deepcopy(newobj[k],item)
+                }
+                else if(item instanceof Object){
+                    newobj[k]=[];
+                    deepcopy(newobj[k],item)
+                }
+                else{
+                    newobj[k]=item;
+                }
+            }
+
+        }
+
+
+        deepcopy(obj,o);
+        console.log(obj)
+
+    </script>
+</body>
+</html>

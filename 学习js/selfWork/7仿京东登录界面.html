@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            border-bottom: 1px solid gray;
+            margin: 20px auto;
+            position: relative;
+            /* 左右margin设置auto来在父元素内居中 */
+        }
+        .box input{
+            width: 300px;
+            height: 30px; /* 子元素设置高度来撑开父元素（没有设置高度） */
+            line-height: 30px;   
+           
+            border: 0px; /* 取消input的边框 */
+            outline: none;/* 取消input的轮廓 */
+        }
+        .box #btn{
+            font-size: 13px;
+            position: absolute;
+            right: 10px;
+            top: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 点击按钮文本框可见密码
+    再点击就看不见
+核心： 利用一个flag变量，来判断flag的值，如果是1则是为文本框，点击后flag=0
+如果是0则是密码框，点击后flag=1-->
+    <div class="box">
+        <input type="password" >
+        <div id="btn">显示文本</div>
+    </div>
+    <script>
+        var input= document.querySelector('input');
+        var btn=document.getElementById('btn');
+
+
+        var flag=0;//0是密码，1是文本
+        btn.onclick=function(){
+            if(flag==0){//即flag=0时被点击====>开启
+                input.type='text';
+                btn.innerText='显示密码';
+                flag=1;
+            }else{//flag=1时被点击=====>关闭
+                input.type='password';
+                btn.innerText='显示文本';
+                flag=0;
+            }
+
+        }
+        //默认关闭（value=0)     点击后开启(value=1)
+        //若点击时关闭（value=0)的状态，那么点击后则是开启(value=1)的状态
+        //若再次点击时是开启value=1的状态，那么再次点击后就关闭value=0
+
+    </script>
+</body>
+</html>

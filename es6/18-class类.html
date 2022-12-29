@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class phone{
+            constructor(name,price){
+                this.name=name;
+                this.price=price;
+            }
+            call(){
+                console.log('这是普通手机');
+            }
+        }
+
+        nokiya=new phone('nokia','5000');
+        console.log(phone)
+        console.log(nokiya)
+        nokiya.call()
+        console.log('------------------------------------')
+
+
+        //继承
+        class smartphone extends phone {
+            constructor(name,price,inch){
+                super(name,price);
+                this.inch=inch
+            }
+            play(){
+                console.log('play');
+            } 
+            // //get 和 set
+            // //当获取时调用get
+            // //当设置时调用set
+            // get price(){
+            //     console.log('获取价格啦')
+            //    return this.price
+            //     //可以return return的值为多少price的值就是多少
+            // }
+            // set price(value){
+            //     price=value //RangeError: Maximum call stack size exceeded
+            //     //price=value
+            //     console.log('设置价格啦')
+            // }
+        }
+
+
+        xiaomi =new smartphone('xiaomi','1000','6.2')
+        xiaomi.play();
+        console.log(xiaomi)
+        console.log('------------------------------------')
+        console.log(Object.getPrototypeOf(xiaomi))
+
+        // //设置
+        // xiaomi.price='1000';
+
+        // //调用
+        // console.log(xiaomi.price)
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="box">开奖了</span>
+    <div id="lucky"></div>
+    <script>
+        var list=['01','02','03','04','05','06','07','08','09','10','11'];
+        var ar=[];
+        var box=document.getElementById('box');
+        var lucky=document.getElementById('lucky');
+        var count=8;
+        setTimeout('show()',1000);
+        function show(){
+            var num=Math.floor(Math.random()*list.length);
+            box.innerHTML=list[num];
+            var myTime=null;
+            myTime=setTimeout("show()",1000);
+            count--;
+            if(count<0){
+                clearTimeout(myTime);
+                ar.push(list[num]);
+                list.splice(num,1);
+                lucky.innerHTML="本期学院号码："+ar.join("");
+                if(ar.length<5){
+                    count=8;
+                    setTimeout("show()",1000);
+                }else
+                setTimeout("box.innerHTML='';",1000);
+            }
+        }
+    </script>
+</body>
+</html>

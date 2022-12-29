@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        span{
+            position: absolute;
+            display: block;
+            height: 30px;
+            width: 30px;
+     
+        }
+        div{
+            position: relative;
+        }
+        ul{
+           margin-left: 100px;
+            
+            left: 60px;
+            width: 1000px;
+        }
+        ul li{
+            float: left;
+            list-style: none;
+            margin-right: 30px;
+        }
+    </style>
+    <script src="js函数/animate.js"></script>
+</head>
+<body>
+    <div>
+        <span><img src="图片/arrow-next.png"></span>
+        <ul>
+            <li>企业文化</li>
+            <li>热爱游戏</li>
+            <li>学会能力</li>
+            <li>国家魅力</li>
+        </ul>
+    </div>
+    <script>
+        var lis=document.querySelectorAll('li');
+        var span=document.querySelector('span');
+
+
+
+        var current=0;
+        for(var i=0;i<lis.length;i++){
+            lis[i].addEventListener('mouseenter',function(){
+                animate(span,this.offsetLeft-span.offsetWidth);
+            })
+            lis[i].addEventListener('click',function(){
+                current=this.offsetLeft-span.offsetWidth
+            })
+            lis[i].addEventListener('mouseleave',function(){
+                animate(span,current);
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="userInput"><input type="checkbox"id="userRemember"><span>记住用户名</span>
+    <script>
+        var userInput=document.querySelector('#userInput');
+        var userRemember=document.querySelector('#userRemember');
+        var username;
+        //判断是否有存储数据，若有存储数据说明之前已经存储过了=>之前已经点了记住账户
+        if(localStorage.getItem('username')){
+            
+            userInput.value=localStorage.getItem('username');
+            userRemember.checked='true';
+        }
+        
+
+
+        //改变就触发事件
+        //1如果选中就就将值赋给localStorage
+        //2如果没选中那么就删除localStorage中的事件
+        userRemember.addEventListener('change',function(){
+            
+            if(userRemember.checked){
+                localStorage.setItem('username',userInput.value);
+                
+            }else{
+                localStorage.removeItem('username');
+            }
+        })
+    </script>
+</body>
+</html>

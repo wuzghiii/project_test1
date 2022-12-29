@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <!-- <script>   直接用var
+         var dog1 = {
+            dogName:'keke',
+            type:'阿拉私家犬',
+            age:'5岁',
+            itcolor: "棕红色",
+            skill:function(){
+                console.log("旺旺");
+            }
+        }
+        console.log(dog1.age);
+        console.log(dog1['5岁']);
+        dog1.skill();
+    </script> -->
+
+
+    <!-- <script>  new object
+        var mingr= new Object();
+        mingr.name='mingreng';
+        mingr.gender='male';
+        mingr.age='19';
+        mingr.skill=function(){
+            console.log("手里剑");
+        };
+        console.log(mingr.age);
+        console.log(mingr['age']);
+        mingr.skill(); -->
+
+   <script>
+    //利用构造函数创建对象
+    function Character(name,type,blood,attack){
+        this.name=name;
+        this.type=type;
+        this.blood=blood;
+        this.attack=function(){
+            console.log(attack);
+        }
+    }
+    var houyi=new Character('houyi','sheshou',200,"远程");
+    var lianpo=new Character('houyi','roudun',200,"近战");
+    console.log(houyi.blood);
+    houyi.attack();
+    console.log(lianpo.blood);
+    lianpo.attack();
+
+
+    //遍历对象属性
+    for(var key in houyi){
+        document.write(key+' ');
+        document.write(houyi[key]+"    ");
+    }
+    </script>
+</body>
+</html>

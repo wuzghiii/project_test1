@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px #90b;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        //获取button元素
+        const result=document.querySelector('#result');
+        //绑定事件
+        result.addEventListener('mouseover',function(){
+            //1.创建对象
+            const xhr=new XMLHttpRequest();
+
+            
+            //2.初始化
+            xhr.open('get','http://127.0.0.1:8000/delay');
+
+            
+            //设置请求头/
+            //Content-_Type==>设置请求体的类型
+            //application/x-www-form-urlencoded==>参数查询字符串的类型
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+         
+            //3.发送
+            xhr.send();
+
+
+
+            //超时设置为2s，即超过2s服务器不响应就取消请求
+            xhr.timeout=2000;
+
+            //做一个网络延迟的回调函数
+            xhr.ontimeout=()=>{
+                alert("你的网络延迟了")
+            }
+
+
+            //网路异常的回调函数
+            xhr.onerror=()=>{
+                alert("你的网络异常了")
+            }
+
+
+
+
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    if(xhr.status>=200&&xhr.status<300){
+                        result.innerHTML=xhr.response;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

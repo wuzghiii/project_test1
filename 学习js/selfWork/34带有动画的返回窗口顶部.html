@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+            padding: 50px 50px;
+        }
+        .head{
+            height: 300px;
+            background-color: red;
+            margin-bottom: 30px;
+        }
+        .banner{
+            height: 300px;
+            background-color: blue;
+            margin-bottom: 30px;
+        }
+        .body{
+            height: 300px;
+            background-color: gray;
+            margin-bottom: 30px;
+        }
+        .scroll_flow{
+            padding-top: 30px;
+            width: 40px;
+            height: 50px;
+            background-color: brown;
+            position: absolute;
+            right: 0px;
+            top: 500px;
+            
+        }
+        .back{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll_flow">
+        <span class="back">返回上边</span>
+    </div>
+    <div class="head">head</div>
+    <div class="banner">head</div>
+    <div class="body">head</div>
+    <script>
+        //注册事件
+        var scroll_flow=document.querySelector('.scroll_flow');
+        var banner=document.querySelector('.banner');
+        var body=document.querySelector('.body');
+        var back=document.querySelector('.back');
+        var bodyTop=body.offsetTop;
+        var bannerTop=banner.offsetTop;
+        var scorll_flowTop=scroll_flow.offsetTop-bannerTop//得到转化成固定定位时的位置必须先定义在放入事件中不然这个值是动态的
+        
+        //滚动事件
+        document.addEventListener('scroll',function(){
+            // console.log(window.pageYOffset)//返回页面被卷去的头部
+            if(window.pageYOffset>bannerTop){//当页面到达banner时，让flow固定
+                scroll_flow.style.position='fixed';
+                scroll_flow.style.top=scorll_flowTop+'px';
+            }else{//注意返回时特效复原
+                scroll_flow.style.position='absolute';
+                scroll_flow.style.top=500+'px'//注意加单位
+            }
+            if(window.pageYOffset>bodyTop){//当页面到达bodyTop时，让flow固定
+                back.style.display='block'
+            }else{//注意返回时特效复原
+                back.style.display='none'
+            }
+        })
+
+
+        back.addEventListener('click',function(){
+            // window.scroll(0,0);//没有动画
+            animate(window,0);
+        })
+
+
+        function animate(object,target,callback){//object->要移动的盒子   target->目标    callback->回调函数
+    clearInterval(object.timer)//防止多次触发事件导致给同一个timer添加过多的定时器
+        object.timer=setInterval(function(){//object.timer而不是var timer-->减少生产更多的定时器-->减少内存开销
+        //1.（目标值-现在的位置）/10作为每次移动的距离步长   2.用÷号会由小数使得位置不精确--->要取整-->向|绝对值|大的取整?
+        //3.所以当它向反方向走时向下取整
+        step=(target-window.pageYOffset)/10;//现在这是个-值
+        step=step>0?Math.ceil(step):Math.floor(step);
+
+        
+        if(pageYOffset==target){//设置停止
+            clearInterval(object.timer);
+
+            //在定时器结束后调用回调函数
+            //如果回调函数存在的话就调用回调函数，没有的话就不调用
+            if(callback){
+                callback();
+            }
+        }
+        
+        window.scroll(0,pageYOffset+step)//这一步改变了pageYoffset的值
+       
+    },15);
+    
+   
+}
+    </script>
+</body>
+</html>

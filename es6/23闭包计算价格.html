@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var car=(function(){
+            var start=20;
+            var total=0;
+            return{
+                price:function(time){
+                    if(time>3){
+                        total=start
+                    }else{
+                        total=start+(time-3)*5;
+                    }
+               return total
+            },
+            yongdu:function(flag){
+                return flag?total+10:total
+            }
+        }})()
+        console.log( car.price(3));
+        console.log( car.yongdu(true));
+    </script>
+</body>
+</html>

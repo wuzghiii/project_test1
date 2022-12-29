@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="打开子窗口" onclick="makeNewWindow()">
+    <input type="button" value="关闭子窗口" onclick="closeNewWindow()">
+    <script>
+        var btn=document.querySelector('input');
+        function makeNewWindow(){
+            newWindow=window.open('','new','width=260,height=180')
+            newWindow.document.write('通知');
+        }
+        function closeNewWindow(){
+            if(confirm('right?close')&&typeof(newWindow)!=undefined){
+                newWindow.close();
+            }else if(typeof(newWindow)!='undefined'){
+                newWindow.focus();
+            }
+        }
+       
+    </script>
+    
+
+</body>
+</html>

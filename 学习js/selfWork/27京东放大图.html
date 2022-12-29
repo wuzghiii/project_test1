@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img{
+            position: relative;
+            background-image: url(图片/ldh.jpg);
+            background-size: 100%;
+            /* background-color: red; */
+            width: 500px;
+            height: 300px;
+        }
+        .yellow_box{
+            left: 1px;
+            display: none;
+            cursor: move;
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(235, 235, 17, 0.38);
+            z-index: 1000;
+        }
+        .big_box{
+            display: none;
+            position: absolute;
+            left: 946px;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(140, 140, 163, .5);
+            z-index: 1000;
+        }
+        .big_box img{
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="img">
+        <div class="yellow_box"></div>
+        <div class="big_box">
+            <img src="图片/ldh.jpg">
+        </div>
+    </div>
+    <script>
+        //注册事件
+        var img=document.querySelector('.img');
+        var yellow_box=document.querySelector('.yellow_box');
+        var big_box=document.querySelector('.big_box');
+
+
+        //添加显示和隐藏
+        img.addEventListener('mouseover',function(){
+            yellow_box.style.display='block'
+            big_box.style.display='block'
+        });//显示
+        img.addEventListener('mouseleave',function(){
+            yellow_box.style.display='none'
+            big_box.style.display='none'
+        })//隐藏
+
+
+        //添加盒子跟随鼠标移动事件
+        img.addEventListener('mousemove',function(e){//鼠标移动时就
+            var x=e.pageX-this.offsetLeft;
+            var y=e.pageY-this.offsetTop;//获取鼠标在盒子内的坐标
+
+            var X=x-(yellow_box.offsetWidth/2);
+            var Y=y-(yellow_box.offsetHeight/2);//减去自身一半使鼠标始终在黄盒子中心
+            
+            
+
+            //现在要限制黄盒子只在大盒子内
+            if(X<0){
+                X=0;
+            }else if(X>=(img.offsetWidth-yellow_box.offsetWidth)){
+                X=(img.offsetWidth-yellow_box.offsetWidth)
+            }
+            if(Y<0){
+                Y=0;
+            }else if(Y>=(img.offsetHeight-yellow_box.offsetHeight)){
+                Y=(img.offsetHeight-yellow_box.offsetHeight)
+            }
+            yellow_box.style.left=X+'px';
+            yellow_box.style.top=Y+'px';
+
+
+            //让大图动起来
+
+
+
+
+        });
+            
+
+    </script>
+</body>
+</html>

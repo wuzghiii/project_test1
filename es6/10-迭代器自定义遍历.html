@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //自定义遍历数据
+        const banji={
+            name:'重点班',
+            classmate:['a','b','c','d'],
+            //要自定义遍历的话就得用迭代器
+            //就是一个指针对象。这个对象里面有一个next方法
+            //每一次调用next方法，都会返回数据结构的当前成员的信息
+            //返回一个包含value和done两个属性的对象。
+            //其中，value属性是当前成员的值，done属性是一个布尔值，表示遍历是否结束，没有结束返回false，结束为true。
+            [Symbol.iterator](){
+                
+                //索引变量
+                let index=0;
+                return {
+                    next:()=>{
+                        if(index<this.classmate.length){
+                             const result={value:this.classmate[index],done:false}
+                             index++;
+                             return result;
+                        }else{
+                            //返回到头了
+                            return{value:undefined,done:true}
+                        }
+                    }
+                }
+            }
+        }
+
+
+        //要求用for of来遍历学生
+        for(v of banji){
+            console.log(v)
+        }
+    </script>
+</body>
+</html>

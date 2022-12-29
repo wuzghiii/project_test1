@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // const a=[1,2,3];
+        // function change(){
+        //     console.log(arguments);
+        // }
+        //  // change(a);//---->数组
+        //  change(...a)//数组内容
+
+
+
+        // //1.数组的合并
+        // const a=['a1','a2','a3'];
+        // const b=['b1','b2','b3'];
+        // // const c2=a.concat(b);//['a1', 'a2', 'a3', 'b1', 'b2', 'b3']
+        // const c=[...a,...b];
+        // console.log(c2);
+
+
+
+        // //2.数组的克隆
+        // const a=['a1','a2','a3'];
+        // const a1=[...a]//引用对象浅拷贝
+        // console.log(a1)//['a1', 'a2', 'a3']
+
+
+
+        //3.伪数组转化为真正的数组
+        const divs=document.querySelectorAll('div');
+        console.log(divs)//NodeList(6) [div, div, div, div, div, div]
+        divArr=[...divs]
+        console.log(divArr);
+    </script>
+</body>
+</html>

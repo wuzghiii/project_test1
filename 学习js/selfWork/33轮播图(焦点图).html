@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .focus{
+            width: 800px;
+            height: 400px;
+            background-color: bisque;
+            margin: 100px auto;
+            position: relative;
+            
+        }
+        .focus .arrow_r{
+            z-index: 10000;
+            display: none;
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            text-align: center;
+            line-height: 40px;
+            transform: translateY(-50%);
+        }
+        .focus .arrow_l{
+            z-index: 10000;
+            display: none;
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            text-align: center;
+            line-height: 40px;
+            transform: translateY(-50%);
+        }
+        .focus .arrow_l img{
+            vertical-align:middle;
+            
+        }
+        .focus .arrow_r img{
+            vertical-align:middle;
+            
+        }
+        
+        .focus .img {
+            position: absolute;
+            width: 700%;
+            
+            overflow: hidden;
+        }
+        .focus .img li{
+            float: left;
+            width: 800px;
+            height: 400px;
+            list-style: none;
+        }
+        .focus .img li img{
+            width: 800px;
+            height: 400px;
+        }
+        .focus .item{
+            width: 200px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 居中 */
+        }
+        .focus .item ul li{
+            width: 20px;
+            height: 20px;
+            border-radius:50px;
+            background-color: aqua;
+            float: left;
+            list-style: none;
+            margin-right: 10px;
+            display: block;
+        }
+        .focus .item ul .current{
+            background-color: red;
+        }
+    </style>
+    <script src="js函数/animate.js"></script>
+    <script src="33轮播图.js"></script>
+</head>
+<body>
+    <div class="focus">
+        <!-- 按钮 -->
+        <div class="arrow_l"><img src="图片/arrow-prev.png"></div>
+        <div class="arrow_r"><img src="图片/arrow-next.png"></div>
+
+        <!-- 图片 -->
+        <ul class="img">
+            <li><a href="#"><img src="图片/day2/1.jpg"></a></li>
+            <li><a href="#"><img src="图片/day2/2.jpg"></a></li>
+            <li><a href="#"><img src="图片/day2/3.jpg"></a></li>
+            <li><a href="#"><img src="图片/day2/4.jpg"></a></li>
+         
+        </ul>
+
+        <div class="item">
+            <ul>
+                
+                
+            </ul>
+        </div>
+    </div>
+
+    
+</body>
+</html>

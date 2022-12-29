@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- button id="zxy">张学友</button>
+    <button id="ldh">刘德华</button>
+    <img id="img" src="图片/四级阅读.png">
+    <script>
+        var zxy=document.getElementById('zxy');
+        var ldh=document.getElementById('ldh');
+        var img=document.getElementById('img');
+
+
+        zxy.onclick=function(){
+            img.setAttribute('src',"图片/控制面板.png");
+        }
+        ldh.onclick=function(){
+            img.src="图片/四级阅读.png"<
+        } -->
+    
+
+    <!-- 时间问候 -->
+    <div id="div"></div>
+    <script>
+        var div=document.getElementById('div');
+        dateInquire();
+        function dateInquire(){
+            var h=new Date().getHours();
+            
+            if(h<12){
+                
+                div.innerText="早上好";
+            }
+            else if(h<18){
+                div.innerHTML="下午好";
+            } 
+            else {
+                div.innerHTML="晚上好";
+            }
+        }
+    </script>
+     <!-- 时间问候 -->
+</body>
+</html>

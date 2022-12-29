@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btn">
+        倒计时两分钟:
+    </div>
+    <div id="thetime"></div>
+
+    <script>
+        var thetime=document.getElementById('thetime');
+        var btn=document.getElementById('btn');
+
+        var lastime=function(time){
+            var inputTime=new Date(time);
+            var nowTime=new Date();
+            var lastTime=inputTime-nowTime;//获取毫秒
+            lastTime=lastTime/1000;//获取秒
+
+            var mins=parseInt(lastTime/60%60);
+           
+            var seconds=parseInt(lastTime%60);
+            mins>10?mins=mins:mins='0'+mins;
+            seconds>10?seconds=seconds:seconds='0'+seconds;
+            return (mins+'分钟'+seconds+'秒'); 
+        }
+        
+        btn.onclick=function(){
+            thetime.innerHTML='时间是'+lastime('2022-10-30 17:10:10');
+        }
+        </script>
+</body>
+</html>

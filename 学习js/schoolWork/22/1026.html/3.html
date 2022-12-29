@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label><input type="radio" name="gender" value="男" checked="checked">男</label>
+    <label><input type="radio" name="gender" value="女">女</label>
+
+    <label><input type="checkbox" name="hobby" value="足球">足球</label>
+    <label><input type="checkbox" name="hobby" value="篮球">篮球</label>
+    <label><input type="checkbox" name="hobby" value="乒乓球">乒乓球</label>
+    <input type="button" value="展示" onclick="show()">
+    <div id="info"></div>
+    <script>
+        function show(){
+            var oR=document.getElementsByName('gender');
+            var s='我是';
+            var info=document.getElementById('info');
+            if(oR[0].checked==true)
+                s=s+oR[0].value;
+            else
+                s=s+oR[1].value;
+            var oC=document.getElementsByName('hobby');
+            s=s+"生，喜欢";
+            for(i=0;i<oC.length;i++){
+                if(oC[i].checked==true){
+                    s=s+oC[i].value+',';
+                }
+            }
+            info.innerHTML=s;
+        }
+    </script>
+</body>
+</html>

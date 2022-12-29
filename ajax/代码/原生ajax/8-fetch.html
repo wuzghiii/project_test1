@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>
+        post
+    </button>
+    <script>
+        //获取元素
+        let button=document.querySelector('button');
+
+        //绑定事件
+        button.addEventListener('click',()=>{
+            //设置地址和请求行
+            fetch('http://127.0.0.1:8000/fetch?vip=10',{
+                
+
+                //设置请求方法
+                method:'post',
+
+                //请求头
+                headers:{
+                    name:'lqq',
+                    age:17  
+                },
+
+
+                //请求体
+                data:{
+                    username:123123,
+                    password:123123
+                }
+
+            }).then(response=>{
+                //传一个text
+                //return response.text();
+
+
+                //将传输来的json文件转成json
+                return response.json();
+            }).then(response=>console.log(response));
+        })
+    </script>
+</body>
+</html>

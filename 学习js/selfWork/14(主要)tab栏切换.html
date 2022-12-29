@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .tab {
+        width: 600px;
+        margin: 100px auto;
+    }
+
+    .tab_list li {
+        margin-right: 15px;
+        display: inline-block;
+        background-color: gray;
+        width: 100px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+    }
+
+    .tab_list .current {
+        background-color: red;
+    }
+
+    .tab_con {
+        margin-top: 20px;
+    }
+
+    .item {
+        display: none;
+        /* 隐藏盒子 */
+    }
+</style>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">商品介绍内容</div>
+            <!-- 默认展示当前盒子 -->
+            <div class="item">规格与 包装内容</div>
+            <div class="item">售后保障内容</div>
+            <div class="item">商品评价内容</div>
+            <div class="item">手机社区内容</div>
+        </div>
+    </div>
+
+    <script>
+        var list = document.querySelector('.tab_list').querySelectorAll('li');
+        var items = document.querySelector('.tab_con').querySelectorAll('.item');
+
+
+        for (var i = 0; i < list.length; i++) {
+            list[i].onclick = function () {
+
+                for (var i = 0; i < list.length; i++) {
+                    list[i].setAttribute('index', i); //为list添加自定义属性
+                    list[i].setAttribute('class', ''); //排他
+                }
+                this.setAttribute('class', 'current'); //这里不准使用lis[i]以为list[i]在一定程度上i=5了
+
+
+
+                var index = this.getAttribute('index'); //获取当前list的下标属性index
+                for (var i = 0; i < items.length; i++) { //排他
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block'; //因为list和item下标相同所以用index当作list和item对应的下标给item设定
+            }
+
+        }
+    </script>
+</body>
+
+</html>

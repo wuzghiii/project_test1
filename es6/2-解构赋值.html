@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // <!-- es6允许按照一定模式从数组和对象中提取值，对变量进行赋值 -->
+    // <!-- 数组的解构 -->
+    const A=['a','b','c'];
+    let[a,b,c]=A;
+    console.log(a+','+b+','+c)
+
+
+
+
+    //对象的解构
+    const ZZ={
+        name:'wx',
+        age:'20',
+        address:'xuexiao',
+        skill:()=>{
+            console.log('make w')
+        }
+    }
+    //注意这里属性名必须和对象内一样
+    let{name,age,address,skill}=ZZ;
+    skill();
+
+    </script>
+    
+</body>
+</html>

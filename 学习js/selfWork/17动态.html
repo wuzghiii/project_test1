@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .serach_div{
+        width: 250px;
+        margin: 100px auto;
+      }
+      table {
+        width: 500px;
+        margin: 100px auto;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      td {
+        border: 1px solid #333;
+      }
+      thead tr {
+        height: 40px;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="serach_div">
+      <span>搜索</span><input type="text"><button>搜索</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <td>姓名</td>
+          <td>科目</td>
+          <td>成绩</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+        //1.获取数据
+        var datas=[
+          {
+            name: "啊亲啊",
+            subject: "js",
+            score: "20",
+          },
+          {
+            name: "塞斯黑",
+            subject: "js",
+            score: "50",
+          },
+          {
+            name: "八哥",
+            subject: "js",
+            score: "70",
+          },
+        ];
+        
+        //2.创建行      有多少人创建多少行
+        var tbody=document.querySelector('tbody');
+        for(let i=0;i<datas.length;i++){
+            var tr=document.createElement('tr');
+            tbody.appendChild(tr);
+            
+            //创建单元格
+            for(k in datas[i]){
+                var td=document.createElement('td');//每次建立一个td
+                td.innerHTML=datas[i][k];//datas[i][k]获取对应k的属性值-->每个td获取这个这个值
+                tr.appendChild(td);
+            }
+
+
+            // //动态创建删除的单元格
+            // var tdDelete=document.createElement('td');
+            // tdDelete.innerHTML='<a href="javascript:;">删除</a>';
+            // tr.appendChild(tdDelete);
+
+
+
+        }
+        var as=document.querySelector('tbody').querySelectorAll('a');
+        for(let i=0;i<as.length;i++){
+            as[i].onclick=function(){
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+
+        //3.搜索
+        var serach=document.querySelector('input');
+        var serachbutton=document.querySelector('button');
+
+
+        serachbutton.addEventListener('click',function(){
+
+          //取消所有颜色
+          for(let i=0;i<datas.length;i++){
+            tbody.children[i].style.backgroundColor='white';
+          }
+          //给寻找到名字的一行添加颜色
+          var flag=false;
+          for(let i=0;i<datas.length;i++){
+            if(datas[i].name==serach.value){
+              tbody.children[i].style.backgroundColor='red';
+              flag=true;
+            }
+          }
+          if(!flag){
+            alert('没有结果');
+            
+          }
+        })
+      </script>
+  </body> 
+</html>

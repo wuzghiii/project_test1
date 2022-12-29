@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr><td><input type="checkbox" id="j_cbAll"></td><td>商品</td><td>价钱</td></tr>
+        </thead>
+        <tbody id="j_tb">
+            <tr><td><input type="checkbox" ></td><td>苹果1</td><td>10000</td></tr>
+            <tr><td><input type="checkbox" ></td><td>苹果2</td><td>50000</td></tr>
+            <tr><td><input type="checkbox" ></td><td>苹果3</td><td>60000</td></tr>
+        </tbody>
+    </table>
+
+
+    <script>
+            var j_cbAll=document.getElementById('j_cbAll');
+            var j_cbs=document.querySelector('#j_tb').querySelectorAll('input');
+
+
+            //全选若选择总的按钮时则控制所有按钮都与总的按钮一样
+            j_cbAll.onclick=function(){
+
+                     for(var i=0;i<j_cbs.length;i++){
+                        j_cbs[i].checked=this.checked;//使总按钮和按钮的状态相同
+                        //this.checked如果选定怎么返回true
+                     }
+            }
+
+            //所有按钮都选上时总的按钮才选上
+            for(var i=0;i<j_cbs.length;i++){//遍历所有小按钮
+                j_cbs[i].onclick=function(){//当一个小按钮背点击时
+                    var index=true; //定义一个value  默认为true
+                    for(var i=0;i<j_cbs.length;i++){//循环每一个小按钮判断他们是否都为checked
+                        if(!j_cbs[i].checked){
+                            index=false;//若有一个为非checked那么说明不满足所有小按钮都为chekced
+                            break;
+                        }
+                    }
+                    
+                        j_cbAll.checked=index;//最后将index的状态赋值给大按钮
+                        //即index为false那么大按钮不选上
+                        //index为true大按钮选上
+                    
+                }
+                
+            }
+    </script>
+</body>
+</html>

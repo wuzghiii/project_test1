@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    用户名：<input type="text">
+    <p></p>
+    <script>
+        const input=document.querySelector('input');
+        const p=document.querySelector('p');
+
+
+        const handle=(data)=>{
+            p.innerHTML=data.mgs
+        }
+
+
+        input.addEventListener('blur',()=>{
+            let username=input.value;//获取username的值传给服务端判断是否存在
+
+
+            //1.创建一个script
+            var script=document.createElement('script');
+
+
+            //2.设置script的地址
+            script.src='http://127.0.0.1:8000/jsonp_yuansheng'
+
+
+            //3.用添加到document的形式添加
+            document.body.appendChild(script);
+
+        })
+
+
+
+    </script>
+</body>
+</html>

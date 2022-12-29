@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .sliderbar {
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+        } */
+        .bar{
+            text-align: center;
+            position: fixed;
+             width: 30px;
+            height: 30px;
+            background-color: red;
+            right: 0;
+            
+        }
+        
+        .bar_absolute{
+            width: 200px;
+            height: 30px;
+            background-color:green;
+            position: absolute;
+            left: 0px;
+            top: 0px;  
+            z-index: -1; 
+            
+        }
+    </style>
+    <script src="js函数/animate.js"></script>
+</head>
+<body>
+    <div class="bar">
+        <span class="bar_static">《-</span>
+        <div class="bar_absolute">问题反馈</div>
+    </div>
+    <script>
+        var bar=document.querySelector('.bar');
+        var bar_absolute=document.querySelector('.bar_absolute');
+
+
+        bar.addEventListener('mouseenter',function(){
+            animate(bar_absolute,-160  ,function(){
+                bar.children[0].innerHTML='-->'
+            })
+        })
+        bar.addEventListener('mouseleave',function(){
+            animate(bar_absolute,0,function(){
+                bar.children[0].innerHTML='<--'
+            })
+        })
+    </script>
+</body>
+</html>

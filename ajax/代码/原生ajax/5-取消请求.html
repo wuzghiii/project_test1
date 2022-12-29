@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>发送</button>
+    <button>取消</button>
+    <script>
+        //获取元素
+        const btns=document.querySelectorAll('button');
+
+         //创建对象
+         let xml=null;
+
+        //绑定事件
+
+        //发送事件
+        btns[0].addEventListener('click',()=>{
+         
+            xml=new XMLHttpRequest;
+
+            //初始化
+            xml.open('get','http://127.0.0.1:8000/delay');
+
+            //请求
+            xml.send();
+        })
+
+
+        //取消事件
+        btns[1].addEventListener('click',()=>{
+            //取消请求
+            xml.abort();
+        })
+    </script>
+</body>
+</html>

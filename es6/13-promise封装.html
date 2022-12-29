@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //实例化 Promise 对象
+        const p=new Promise(function(resolve,reject){
+            //异步任务
+            setTimeout(()=>{
+                //成功状态
+                // let data='用户数据'
+                // resolve(data);
+
+
+                let error='错误';
+                reject(error);
+                
+            })
+        })
+
+
+        //调用 promise 对象的then 方法来获取数据
+        //如果p用resolve来接受数据那么就用then内调用第一个函数
+        //如果p用reject来接受数据那么就用then内调用第二个函数
+        //函数内的形参就是数据
+        p.then(value=>console.log(value),reason=>console.error(reason))
+    </script>
+</body>
+</html>
