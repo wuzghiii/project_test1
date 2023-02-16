@@ -11,7 +11,7 @@
 
         const p=new Promise((resolve,reject)=>{
         var xhr=new XMLHttpRequest;
-        xhr.open('get',"http://127.0.0.1:8000/get");
+        xhr.open('get',"http://127.0.0.1:8001/get");
         xhr.send();
         xhr.onreadystatechange=()=>{
             if(xhr.readyState===4){
