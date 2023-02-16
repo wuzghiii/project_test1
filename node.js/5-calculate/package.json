@@ -1,0 +1,9 @@
+
+{
+"name":"calculor1231233",
+"version":"1.0.0",
+"main":"./index.js",
+"description":"加和减",
+"keywords":["calculor","计算"],
+"license":"ISC"
+}

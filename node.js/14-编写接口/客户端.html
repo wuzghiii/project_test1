@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+    <button>get</button>
+    <button>post</button>
+    <button>delete</button>
+</body>
+<script>
+    
+     //配置baseURL;
+     axios.defaults.baseURL='http://localhost:808/api'
+
+    const btnget=document.querySelectorAll('button')[0];
+    const btnpost=document.querySelectorAll('button')[1];
+    const btndelete=document.querySelectorAll('button')[2];
+    btnget.addEventListener('click',function(){
+        axios.get('/get',{
+             //url参数（请求行）    
+             params:{
+                vip:1,
+                password:30
+            }
+        }).then(value=>{
+        console.log(value);
+    });
+    })
+    
+    btnpost.addEventListener('click',function(){
+       var qs=Qs
+        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+        axios.post('/post',qs.stringify({ key: 'aa'})
+        ).then(value=>{
+        console.log(value.data);
+    });
+    })
+
+
+    btndelete.addEventListener('click',function(){
+        var qs=Qs
+        axios.defaults.headers.delete['Content-Type'] = 'application/x-www-form-urlencoded'
+        axios.delete('/delete',qs.stringify({ key: 'aa'})).then(value=>{console.log(value.data)})
+    })
+</script>
+</html>
