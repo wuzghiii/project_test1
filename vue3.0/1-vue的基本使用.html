@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2在页面声明一个将要被vue所控制的dom区域 -->
+    <div id="user">{{name}}</div>
+
+    <!-- 1导入vue.js的script脚本文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+
+    <script>
+        
+        // 3创建vm实例对象（vue实例对象）
+
+        //el指向的选择器就是View试图区域
+        //data指向的对象就是数据源
+        //new Vue()构造函数得到的vm实例对象，就是ViewModel
+        Vue.config.devtools = true;
+        const vm=new Vue({
+            // 3.1使用el属性，声明要控制的区域
+            el:'#user',
+            // 3.2数据源
+            data:{
+                name:'ww'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "vue3.0",
+  "version": "1.0.0",
+  "main": "async和await.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "then-fs": "^2.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cil": "^0.0.1-security",
+    "webpack-cli": "^5.0.1"
+  },
+  "description": ""
+}

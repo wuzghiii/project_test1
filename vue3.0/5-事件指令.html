@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{count}}
+        <!-- 添加参数时候需要括号，$event代表事件原生参数 -->
+        <button @click="addNewCount(2,$event)">增加</button>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        const vm=new Vue({
+            el:'#app',
+            data:{
+                count:0
+            },
+            methods: {
+                //点击按钮让count自增
+                addCount(e){
+                    //this指向vm
+                   this.count++;
+                   const bgc=e.target.style.backgroundColor;
+                   e.target.style.backgroundColor= bgc==='red'?'':'red'
+                },
+                //添加参数，并用$event作为原生参数
+                addNewCount(step,e){
+                     //this指向vm
+                   this.count+=step;
+                   const bgc=e.target.style.backgroundColor;
+                   e.target.style.backgroundColor= bgc==='red'?'':'red'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

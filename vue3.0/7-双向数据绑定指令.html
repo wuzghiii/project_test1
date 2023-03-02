@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a">
+        <div>{{name}}</div>
+        <!-- v-model和name绑定那么表单的数据和name互通即
+        修改表单时也会修改name，修改name时也会修改表单 -->
+        <input type="text" v-model="name">
+
+        <div>{{province}}</div>
+        <select v-model="province">
+            <!-- option的value会传给v-model导致province的值改变
+            同样的改变province也会修改select的选项 -->
+            <!-- 
+                每个 <option> 元素都应该有一个 value 属性，
+                其中包含被选中时需要提交到服务器的数据值。 
+                如果不含 value 属性，则 value 值默认为元素中的文本。
+             -->
+            <option value="">请选择</option>
+            <option>上海</option>
+            <option>南京</option>
+        </select>
+
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        const vm=new Vue({
+            el:'#a',
+            data :{
+                name:'阿俊',
+                province:''
+            },
+            methods: {
+                submit(e){
+                    console.log(e.target.value)
+                },
+                clear(e){
+                    e.target.value=''
+                }
+            }
+        })
+    </script>
+</body>
+</html>

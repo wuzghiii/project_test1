@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a">
+        <button @click="flag=!flag">出现</button>
+        <p v-if="flag">11</p>
+        <p v-show="flag">111</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        const vm=new Vue({
+            el:'#a',
+            data :{
+                flag:true
+            },
+            methods: {
+            }
+        })
+    </script>
+</body>
+</html>
